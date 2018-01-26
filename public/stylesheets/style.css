@@ -1,21 +1,16 @@
+/* chat content scroll */
+
 .ts .speeches {
   overflow-y: scroll;
   height: 400px;
   padding-right: 10px;
 }
 
-.ts .speeches .group {
-  margin: 10px 0;
-}
+/* flex right align */
 
-.ts .speeches .right.group {}
-
-.ts.speeches .speech .avatar {
-  box-shadow: none;
-}
-
-.ts.speeches .speech .avatar img {
-  border-radius: 100%;
+.ts .speeches .right .speech .group {
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .ts.menu .item.logout {

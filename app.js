@@ -17,11 +17,17 @@ var app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-io.on('connection', async(socket) => {
+io.on('connection', async (socket) => {
 
   console.log('a user connected');
 
   const socketid = socket.id;
+
+  var url = socket.request.headers.referer;
+  var splited = url.split('/');
+  var roomID = splited[splited.length - 1]; // 获取房间ID
+
+  socket.join('room');
 
   socketHander = new SocketHander();
 
@@ -30,6 +36,9 @@ io.on('connection', async(socket) => {
   const history = await socketHander.getMessages();
 
   io.to(socketid).emit('history', history);
+  io.to(socketid).emit('peaple', io.sockets.clients());
+
+
 
   socket.on("disconnect", function () {
     console.log("a user go out");
@@ -39,6 +48,7 @@ io.on('connection', async(socket) => {
     socketHander.storeMessages(obj);
     io.emit("message", obj);
   });
+
 
 });
 

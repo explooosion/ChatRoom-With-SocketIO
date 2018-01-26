@@ -28,8 +28,7 @@ function login() {
 
             document.querySelector('.login').style.display = 'none';
             document.querySelector('.logout').style.display = 'inline';
-            swal(`Welcome! ${value}`);
-
+            location.reload();
         });
 }
 
