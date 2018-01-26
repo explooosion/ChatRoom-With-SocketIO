@@ -32,11 +32,14 @@ io.on('connection', async (socket) => {
   const history = await socketHander.getMessages();
 
   io.to(socketid).emit('history', history);
+  io.to(socketid).emit('clients', {
+    clients: clients,
+  });
 
-  socket.on("disconnect", () => {
+  socket.on("disconnect", async () => {
     console.log("a user go out");
     io.emit("clients", {
-      clients: clients - 1,
+      clients: clients,
     });
   });
 
