@@ -23,22 +23,15 @@ io.on('connection', async (socket) => {
 
   const socketid = socket.id;
 
-  var url = socket.request.headers.referer;
-  var splited = url.split('/');
-  var roomID = splited[splited.length - 1]; // 获取房间ID
-
-  socket.join('room');
-
   socketHander = new SocketHander();
 
   socketHander.connect();
 
   const history = await socketHander.getMessages();
+  const sys = await io.engine.clientsCount;
 
   io.to(socketid).emit('history', history);
-  io.to(socketid).emit('peaple', io.sockets.clients());
-
-
+  io.to(socketid).emit('sys', sys);
 
   socket.on("disconnect", function () {
     console.log("a user go out");
@@ -49,15 +42,14 @@ io.on('connection', async (socket) => {
     io.emit("message", obj);
   });
 
-
 });
 
 server.listen(process.env.SOCKET_PORT);
 
-app.use(function (req, res, next) {
-  res.io = io;
-  next();
-});
+// app.use(function (req, res, next) {
+//   res.io = io;
+//   next();
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -73,13 +65,13 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.all('*', function (req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
-//   res.header("Access-Control-Allow-Headers", "X-Requested-With");
-//   res.header('Access-Control-Allow-Headers', 'Content-Type');
-//   next();
-// });
+app.all('*', function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
 
 app.use('/', index);
 app.use('/users', users);
