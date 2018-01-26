@@ -8,18 +8,23 @@ if (typeof (Storage) !== "undefined") {
         document.querySelector('.logout').style.display = 'inline';
     }
 } else {
-    alert('Oops! Your browser can not support localstorage');
+    swal({
+        title: "Oops!",
+        text: "Your browser can not support localstorage.",
+        icon: "error"
+    });
 }
 
 function login() {
-    swal("please input your name:", {
-            content: "input",
+    swal({
+            title: "請輸入使用者名稱:",
+            icon: "info",
+            content: "input"
         })
         .then((value) => {
-
             console.log(value);
             if (value === undefined || value === null) {
-                swal("can not empty!");
+                login();
                 return false;
             }
 
@@ -33,7 +38,14 @@ function login() {
 }
 
 function logout() {
-
-    localStorage.clear();
-    location.reload();
+    swal({
+        title: "確定要登出?",
+        icon: "warning",
+        buttons: true
+    }).then((e) => {
+        if (e) {
+            localStorage.clear();
+            location.reload();
+        }
+    });
 }

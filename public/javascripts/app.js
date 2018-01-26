@@ -33,7 +33,10 @@ document.querySelector('input').addEventListener('keypress', (e) => {
 function sendData() {
     let msg = document.querySelector('input').value;
     if (!msg) {
-        alert('請輸入訊息!');
+        swal({
+            title: "請輸入訊息!",
+            icon: "error",
+        });
         return;
     }
     let data = {
@@ -64,6 +67,7 @@ function appendData(obj) {
         //       <div class="inline author">Yami Odymel</div>
         //       <div class="text">：嗨！早安。</div>
         //     </div>
+        //     <div class=" time"></div>
         //   </div>
 
         // myself
@@ -76,6 +80,7 @@ function appendData(obj) {
         //         <div class="inline author">Yami Odymel</div>
         //         <div class="text">：嗨！早安。</div>
         //       </div>
+        //     <div class=" time"></div>
         //     </div>
         //   </div>
 
@@ -83,19 +88,19 @@ function appendData(obj) {
             `
             <div class="${element.name == account ? 'right circular group' : 'circular group'}">
                 <div class="speech">
-                   ${element.name == account? "<div class='group'>":''}
+                    ${element.name == account? "<div class='group'>":''}
                         <div class="avatar">
                             <img src="${element.name == account ? './images/user.png' : './images/user1.png'}">
                         </div>
                         <div class="content">
                             <div class="inline author">${element.name == account ? '' : element.name}</div>
-                            <div class="text">${element.name == account ? element.msg : '：' + element.msg}</div>
-                        </div>
+                            <div class="text">${element.name == account ? element.msg : '：' + element.msg}</div> 
+                        </div>  
+                        <div class=" time">${moment(element.time).fromNow()}</div>
                     ${element.name == account? "</div>":''}
                 </div>
             </div>
             `
-
     });
 
     el.innerHTML = html.trim();
