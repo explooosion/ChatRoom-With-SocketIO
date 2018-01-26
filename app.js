@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+const moment = require('moment');
 const SocketHander = require('./socket/index');
 
 require('dotenv').config();
@@ -20,6 +21,7 @@ const io = require('socket.io')(server);
 io.on('connection', async (socket) => {
 
   console.log('a user connected');
+  const clients = await io.engine.clientsCount;
 
   const socketid = socket.id;
 
@@ -28,18 +30,26 @@ io.on('connection', async (socket) => {
   socketHander.connect();
 
   const history = await socketHander.getMessages();
-  const sys = await io.engine.clientsCount;
 
   io.to(socketid).emit('history', history);
-  io.to(socketid).emit('sys', sys);
 
-  socket.on("disconnect", function () {
+  socket.on("disconnect", () => {
     console.log("a user go out");
+    io.emit("clients", {
+      clients: clients - 1,
+    });
   });
 
-  socket.on("message", function (obj) {
+  socket.on("message", (obj) => {
     socketHander.storeMessages(obj);
     io.emit("message", obj);
+  });
+
+  socket.on('clients', (obj) => {
+    io.emit("clients", {
+      clients: clients,
+      user: obj,
+    });
   });
 
 });
