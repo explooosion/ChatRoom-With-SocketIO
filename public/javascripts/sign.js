@@ -30,9 +30,6 @@ function login() {
 
             localStorage.setItem('account', value);
             account = localStorage.getItem('account');
-
-            document.querySelector('.login').style.display = 'none';
-            document.querySelector('.logout').style.display = 'inline';
             location.reload();
         });
 }
