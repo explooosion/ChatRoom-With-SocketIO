@@ -26,7 +26,6 @@ class SocketHander {
 
         const doc = newMessages.save();
     }
-
 }
 
 module.exports = SocketHander;
