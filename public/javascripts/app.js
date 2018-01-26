@@ -1,18 +1,24 @@
 if (account) {
 
+    // 新增使用者    
+
     console.log('account:' + account);
 
     socket = io.connect('ws://192.168.0.100:3001');
 
-    // // 歷史訊息
+    socket.emit('clients', account);
+
+    // 歷史訊息
     socket.on('history', (obj) => {
         if (obj.length > 0) {
             appendData(obj);
         }
     });
 
-    socket.on('sys', (obj) => {
-        document.querySelector('.online').innerHTML = obj;
+    socket.on('clients', (obj) => {
+        console.log(obj);
+        document.querySelector('.online').innerHTML = obj.clients;
+        if (obj.user !== undefined) broadcast(obj.user);
     });
 
     socket.on('message', (obj) => {
@@ -21,7 +27,7 @@ if (account) {
 }
 
 document.querySelector('#btnAddMsg').addEventListener('click', () => {
-    sendData()
+    sendData();
 });
 document.querySelector('input').addEventListener('keypress', (e) => {
     if (e.code == 'Enter' || e.code == 'NumpadEnter') {
@@ -30,6 +36,9 @@ document.querySelector('input').addEventListener('keypress', (e) => {
     }
 });
 
+/**
+ * 傳送訊息
+ */
 function sendData() {
     let msg = document.querySelector('input').value;
     if (!msg) {
@@ -46,11 +55,18 @@ function sendData() {
     socket.emit('message', data);
 }
 
+/**
+ * 卷軸捲動至下
+ */
 function scrollWindow() {
     let h = document.querySelector('.speeches');
     h.scrollTo(0, h.scrollHeight);
 }
 
+/**
+ * 聊天紀錄
+ * @param {聊天訊息} obj 
+ */
 function appendData(obj) {
 
     let el = document.querySelector('.speeches');
@@ -100,8 +116,37 @@ function appendData(obj) {
                     ${element.name == account? "</div>":''}
                 </div>
             </div>
-            `
+            `;
     });
+
+    el.innerHTML = html.trim();
+    scrollWindow();
+
+}
+
+/**
+ * 廣播有人進來
+ * @param {暱稱} obj 
+ */
+function broadcast(obj) {
+
+    // <div class="speech">
+    //     <div class="broadcast">
+    //         <i class="announcement icon"></i>Robby 溜了進來。
+    //     </div>
+    // </div>
+
+    let el = document.querySelector('.speeches');
+    let html = el.innerHTML;
+
+    html +=
+        `
+        <div class="speech">
+            <div class="broadcast">
+                <i class="announcement icon"></i>${obj} 溜了進來。
+            </div>
+        </div>
+        `;
 
     el.innerHTML = html.trim();
     scrollWindow();
