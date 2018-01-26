@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link href="https://cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.css" rel='stylesheet'>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="https://cdn.rawgit.com/TeaMeow/TocasUI/2.3.2/dist/tocas.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js'></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body>
+  <!-- 頂部導航選單 -->
+  <div class="ts large link attached inverted info menu">
+    <div class="ts narrow container">
+      <a class="header item">聊天室</a>
+      <a class="item">大廳</a>
+      <a class="right item login" onclick="login()">登入</a>
+      <a class="right item logout" onclick="logout()">登出</a>
+    </div>
+  </div>
+  <!-- / 頂部導航選單 -->
+
+  <!-- 主要容器網格系統 -->
+  <div class="ts narrow container grid">
+    <!-- 左側欄位 -->
+    <div class="twelve wide column">
+      <br>
+      <!-- 頂部聊天室資訊欄位 -->
+      <div class="ts top attached segmented small single line items">
+        <div class="item">
+          <i class="large inverted info rounded announcement icon"></i>
+          <div class="content">
+            <div class="header">聊天室範例 | Tocas UI</div>
+            <div class="extra">
+              這裡是隨便喇滴賽的聊天室。
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- / 頂部聊天室資訊欄位 -->
+
+      <!-- 中部主要聊天訊息 -->
+      <div class="ts attached secondary segment">
+        <!-- 對話氣泡 -->
+        <div class="ts speeches">
+          <!-- appendChild from app.js -->
+        </div>
+        <!-- / 對話氣泡 -->
+      </div>
+      <!-- / 中部主要聊天訊息 -->
+
+      <!-- 底部輸入欄位 -->
+      <div class="ts bottom attached segment">
+        <div class="ts grid">
+          <div class="stretched column">
+            <div class="ts fluid input">
+              <input placeholder="在此輸入文字⋯⋯" />
+            </div>
+          </div>
+          <div class="column">
+            <div id="btnAddMsg" class="ts button">送出</div>
+          </div>
+        </div>
+      </div>
+      <!-- / 底部輸入欄位 -->
+    </div>
+    <!-- / 左側欄位 -->
+
+    <!-- 右側欄位 -->
+    <div class="four wide column">
+      <br>
+      <div class="ts tiny segmented single line items">
+        <div class="item">
+          <div class="ts mini image">
+            <img src="./images/user1.png">
+          </div>
+          <div class="content">
+            <div class="header">Lily</div>
+            <div class="meta">
+              <div>@lily520</div>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ts mini image">
+            <img src="./images/user2.png">
+          </div>
+          <div class="content">
+            <div class="header">伊波咲</div>
+            <div class="meta">
+              <div>@SakiInami</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- / 右側欄位 -->
+  </div>
+  <!-- / 主要容器網格系統 -->
+</body>
+<script src='./javascripts/sign.js'></script>
+<script src='./javascripts/app.js'></script>
+
+</html>
