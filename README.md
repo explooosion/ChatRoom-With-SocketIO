@@ -14,6 +14,8 @@ a chatroom with node.js express and mongodb
 
 Install MongoDB, and following the steps.  
 + how to install mongodb?  [Install MongoDB (zh-tw)](https://dotblogs.com.tw/explooosion/2018/01/21/040728)
+  
+Clone project:
 
 ```bash
 git clone https://github.com/explooosion/ChatRoom-With-SocketIO.git
