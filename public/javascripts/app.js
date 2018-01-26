@@ -32,7 +32,6 @@ document.querySelector('#btnAddMsg').addEventListener('click', () => {
 document.querySelector('input').addEventListener('keypress', (e) => {
     if (e.code == 'Enter' || e.code == 'NumpadEnter') {
         sendData();
-        document.querySelector('input').value = '';
     }
 });
 
@@ -53,6 +52,7 @@ function sendData() {
         msg: msg,
     };
     socket.emit('message', data);
+    document.querySelector('input').value = '';
 }
 
 /**
