@@ -36,10 +36,10 @@ io.on('connection', async (socket) => {
     clients: clients,
   });
 
-  socket.on("disconnect", async () => {
+  socket.on("disconnect", () => {
     console.log("a user go out");
     io.emit("clients", {
-      clients: clients,
+      clients: clients - 1,
     });
   });
 
