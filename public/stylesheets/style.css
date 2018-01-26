@@ -13,6 +13,25 @@
   flex-direction: row-reverse;
 }
 
+/* start add .time */
+
+.ts.speeches .speech .content {
+  flex: unset;
+}
+
+.ts.speeches .speech .time {
+  color: #aaa;
+  position: relative;
+  display: table;
+  margin-left: 1em;
+  padding: .58em .58em;
+  word-wrap: normal;
+  font-size: 6px;
+  line-height: 2.2em;
+}
+
+/* end add .time */
+
 .ts.menu .item.logout {
   display: none;
 }
