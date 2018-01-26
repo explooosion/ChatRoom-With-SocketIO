@@ -2,22 +2,17 @@ if (account) {
 
     console.log('account:' + account);
 
-    socket = io.connect('ws://127.0.0.1:3001');
-    // socket.emit("message", 'hi');
+    socket = io.connect('ws://192.168.0.100:3001');
 
     // // 歷史訊息
     socket.on('history', (obj) => {
-
-        console.log(obj);
-
         if (obj.length > 0) {
             appendData(obj);
         }
-
     });
 
-    socket.on('peaple', (obj) => {
-        console.log(obj);
+    socket.on('sys', (obj) => {
+        document.querySelector('.online').innerHTML = obj;
     });
 
     socket.on('message', (obj) => {
@@ -29,7 +24,7 @@ document.querySelector('#btnAddMsg').addEventListener('click', () => {
     sendData()
 });
 document.querySelector('input').addEventListener('keypress', (e) => {
-    if (e.code == 'Enter') {
+    if (e.code == 'Enter' || e.code == 'NumpadEnter') {
         sendData();
         document.querySelector('input').value = '';
     }
@@ -55,8 +50,8 @@ function scrollWindow() {
 
 function appendData(obj) {
 
-    let html = '';
     let el = document.querySelector('.speeches');
+    let html = el.innerHTML;
 
     obj.forEach(element => {
 

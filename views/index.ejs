@@ -17,7 +17,8 @@
   <!-- 頂部導航選單 -->
   <div class="ts large link attached inverted info menu">
     <div class="ts narrow container">
-      <a href="./" class="header item">聊天室範例 | Tocas UI</a>
+      <a href="./" class="header item">聊天室範例</a>
+      <a href="https://github.com/explooosion/ChatRoom-With-SocketIO" target="_blank" class="header item">Github</a>
       <a class="right item login" onclick="login()">登入</a>
       <a class="right item logout" onclick="logout()">登出</a>
     </div>
@@ -34,9 +35,17 @@
         <div class="item">
           <i class="large inverted info rounded announcement icon"></i>
           <div class="content">
-            <div class="header">聊天室範例 | Tocas UI</div>
-            <div class="extra">
-              這裡是隨便喇滴賽的聊天室。
+            <div class="header">聊天室範例</div>
+            <div class="ts column grid">
+              <div class="column row">
+                <div class="left floated column left aligned secondary">
+                  這裡是隨便喇滴賽的聊天室。
+                </div>
+                <div class="right floated column right aligned">
+                  <i class="icon user positive" aria-hidden="true"></i>
+                  <span class="online"></span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -62,7 +71,8 @@
             </div>
           </div>
           <div class="column">
-            <div id="btnAddMsg" class="ts button">送出</div>
+            <div id="btnAddMsg" class="ts button info">
+              <i class="icon chat"></i>送出</div>
           </div>
         </div>
       </div>
