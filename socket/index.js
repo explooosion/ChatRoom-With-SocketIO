@@ -1,5 +1,5 @@
 const Messages = require('../models/Messages');
-
+const moment = require('moment');
 class SocketHander {
 
     constructor() {
@@ -21,7 +21,7 @@ class SocketHander {
         const newMessages = new Messages({
             name: data.name,
             msg: data.msg,
-            time: 1516898432214.0
+            time: moment().valueOf(),
         });
 
         const doc = newMessages.save();
