@@ -17,7 +17,8 @@ demo: [http://room.robby570.tw/](http://room.robby570.tw/)
 Install MongoDB, and following the steps.  
 + how to install mongodb?  [Install MongoDB (zh-tw)](https://dotblogs.com.tw/explooosion/2018/01/21/040728)
 
-Using Reference Files - .env.example
+Using Reference Files - .env.example,
+and rename to .env
 + DB_DATABASE=chat
 + DB_USERNAME
 + DB_PASSWORD
