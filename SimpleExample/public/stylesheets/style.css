@@ -1,0 +1,57 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.chats {
+  padding: 10px 5px;
+  height: 200px;
+  width: 500px;
+  background: #eee;
+  overflow-y: scroll;
+}
+
+.chats .chat {
+  display: flex;
+  margin: 5px 0;
+}
+
+.chats .chat .group {
+  display: inherit;
+  word-wrap: normal;
+}
+
+.chats .chat .group .name {
+  padding: 0 10px;
+  font-weight: bold;
+}
+
+.chats .chat .time {
+  padding-left: 10px;
+  font-size: 10px;
+  line-height: 18px;
+  color: #aaa;
+}
+
+.message {
+  margin-top: 10px;
+}
+
+.message input {
+  padding: 0 5px;
+  height: 25px;
+  width: 300px;
+}
+
+.message input:first-child {
+  width: 80px;
+}
+
+.message button {
+  height: 32px;
+  width: 100px;
+}

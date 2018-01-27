@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/locale/zh-tw.js'></script>
+</head>
+
+<body>
+  <div class="chats">
+    <div class="chat">
+      <div class="group">
+        <div class="name">Robby：</div>
+        <div class="msg">Hi~</div>
+      </div>
+      <div class="time">11分鐘前</div>
+    </div>
+    <div class="chat">
+      <div class="group">
+        <div class="name">Robby：</div>
+        <div class="msg">Hola~</div>
+      </div>
+      <div class="time">10分鐘前</div>
+    </div>
+  </div>
+  <div class="message">
+    <input id="name" type="text" placeholder="your name" />
+    <input id="msg" type="text" placeholder="input the message" />
+    <button type="button">送出</button>
+  </div>
+</body>
+<script src="./javascripts/app.js"></script>
+
+</html>
