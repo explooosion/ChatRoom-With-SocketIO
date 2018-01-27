@@ -30,7 +30,7 @@ git clone https://github.com/explooosion/ChatRoom-With-SocketIO.git
 ```
 
 ```bash
-cd ChatRoom-With-SocketIO
+cd ChatRoom-With-SocketIO/ChatRoom
 ```
 
 ```bash
