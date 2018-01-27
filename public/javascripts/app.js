@@ -4,7 +4,7 @@ if (account) {
 
     console.log('account:' + account);
 
-    socket = io.connect('ws://192.168.0.100:3001');
+    socket = io.connect('ws://218.161.68.185:3001');
 
     socket.emit('clients', account);
 
