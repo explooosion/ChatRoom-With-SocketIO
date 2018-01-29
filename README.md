@@ -1,7 +1,7 @@
 # ChatRoom-With-SocketIO
 a chatroom with node.js express and mongodb
 
-demo: [http://room.robby570.tw/](http://room.robby570.tw/)
+demo: [http://room.robby570.tw/](http://218.161.68.185/)
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/explooosion/koa-deploy/blob/master/LICENSE)
 
